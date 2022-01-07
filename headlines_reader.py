@@ -1,4 +1,5 @@
-#pip install newsapi-python
+# pip install newsapi-python
+# https://newsapi.org/docs 
 from newsapi import NewsApiClient
 import os 
 
@@ -15,7 +16,7 @@ newsapi = NewsApiClient(api_key=read_api())
 
 
 # /v2/top-headlines
-top_headlines = newsapi.get_top_headlines(q='Bitcoin',
+top_headlines = newsapi.get_top_headlines(q='bitcoin',
                                           sources='bbc-news,the-verge'
                                                                     )
 
