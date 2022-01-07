@@ -3,8 +3,8 @@ from newsapi import NewsApiClient
 
 def read_api():
     with open("Api_key.txt", "r") as apikey:
-        apikey.read()
-        return apikey
+       file = apikey.read()
+       print(file)
 
 # Init
 newsapi = NewsApiClient(api_key=read_api())
