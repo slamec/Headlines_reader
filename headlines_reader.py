@@ -12,7 +12,7 @@ print(api_key())
 # Init
 newsapi = NewsApiClient(api_key = api_key())
 
-# /v2/top-headlines
+""" # /v2/top-headlines
 top_headlines = newsapi.get_top_headlines(q='bitcoin',
                                           sources='bbc-news,the-verge',
                                           category='business',
@@ -28,8 +28,14 @@ all_articles = newsapi.get_everything(q='bitcoin',
                                       language='en',
                                       sort_by='relevancy',
                                       page=2)
-
+ """
 # /v2/top-headlines/sources
 sources = newsapi.get_sources()
 
+sources_list = []
+
+for items in sources['sources']:
+    sources_list.append(items['name'])
+
+print(sources_list)
     
