@@ -1,6 +1,9 @@
+#!usr/bin/python3
 # pip install newsapi-python
 # https://newsapi.org/docs
+import csv
 from newsapi import NewsApiClient
+
 
 def api_key():
     with open('Api_key.txt', 'r') as key:
@@ -32,10 +35,14 @@ all_articles = newsapi.get_everything(q='bitcoin',
 # /v2/top-headlines/sources
 sources = newsapi.get_sources()
 
+# print(sources)
+
 sources_list = []
 
 for items in sources['sources']:
     sources_list.append(items['name'])
 
-print(sources_list)
-    
+with open('sources_list.csv', 'w', newline= '') as file:
+    for items in sources_list:
+        write = csv.writer(file)
+        write.writerow([items])
