@@ -15,13 +15,12 @@ print(api_key())
 # Init
 newsapi = NewsApiClient(api_key = api_key())
 
-""" # /v2/top-headlines
-top_headlines = newsapi.get_top_headlines(q='bitcoin',
-                                          sources='bbc-news,the-verge',
-                                          category='business',
-                                          language='en',
-                                          country='us')
-
+#/v2/top-headlines
+top_headlines = newsapi.get_top_headlines(q='amazon',
+                                          sources= None,
+                                          page_size= None,
+                                          language= 'en')
+"""
 # /v2/everything
 all_articles = newsapi.get_everything(q='bitcoin',
                                       sources='bbc-news,the-verge',
@@ -32,16 +31,19 @@ all_articles = newsapi.get_everything(q='bitcoin',
                                       sort_by='relevancy',
                                       page=2)
  """
+
+print(top_headlines)
+
+
 # /v2/top-headlines/sources
 sources = newsapi.get_sources()
-
-# print(sources)
 
 sources_list = []
 
 for items in sources['sources']:
     sources_list.append(items['name'])
 
+#write list of sources to a csv row by row
 with open('sources_list.csv', 'w', newline= '') as file:
     for items in sources_list:
         write = csv.writer(file)
