@@ -38,13 +38,17 @@ print(top_headlines)
 # /v2/top-headlines/sources
 sources = newsapi.get_sources()
 
+print(sources)
+
 sources_list = []
 
 for items in sources['sources']:
     sources_list.append(items['name'])
+    sources_list.append(items['url'])
+
 
 #write list of sources to a csv row by row
-with open('sources_list.csv', 'w', newline= '') as file:
+with open('sources_list.csv', 'w', newline= '', encoding='UTF-8') as file:
     for items in sources_list:
         write = csv.writer(file)
         write.writerow([items])
