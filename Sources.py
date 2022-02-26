@@ -19,12 +19,14 @@ newsapi = NewsApiClient(api_key = api_key())
 #get information about all sources 
 sources = newsapi.get_sources()
 
+print(sources)
+
 #sources to list
 sources_list = []
 
-#append sources list 
+#append sources list (id)
 for items in sources['sources']:
-    sources_list.append(items['name'])
+    sources_list.append(items['id'])
 
 #write all the sources to a csv file  
 with open('sources_list.csv', 'w', newline= '') as file:
