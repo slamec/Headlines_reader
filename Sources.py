@@ -1,6 +1,7 @@
 #!usr/bin/python3
 # pip install newsapi-python
 # documentation https://newsapi.org/docs
+from asyncore import write
 import csv
 from newsapi import NewsApiClient
 
@@ -12,17 +13,23 @@ def api_key():
 
 print(api_key())
 
-# Init
+#Init
 newsapi = NewsApiClient(api_key = api_key())
 
-# /v2/top-headlines/sources
+#get information about all sources 
 sources = newsapi.get_sources()
 
-#print(sources)
-
+#sources to list
 sources_list = []
 
+#append sources list 
 for items in sources['sources']:
     sources_list.append(items['name'])
 
-print(sources_list)    
+#write all the sources to a csv file  
+with open('sources_list.csv', 'w', newline= '') as file:
+    for items in sources_list:
+        write = csv.writer(file)
+        write.writerow([items])
+    
+    
